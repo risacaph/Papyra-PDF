@@ -4,6 +4,7 @@ import { Button } from "@app/ui/Button";
 import { useTranslation } from "react-i18next";
 import LocalIcon from "@app/components/shared/LocalIcon";
 import { requestStartTour } from "@app/constants/events";
+import { withBasePath } from "@app/constants/app";
 
 interface HelpSectionProps {
   isAdmin: boolean;
@@ -48,7 +49,7 @@ const HelpSection: React.FC<HelpSectionProps> = ({
             }
             onClick={() =>
               window.open(
-                "https://docs.stirlingpdf.com/",
+                withBasePath("/docs/"),
                 "_blank",
                 "noopener,noreferrer",
               )
