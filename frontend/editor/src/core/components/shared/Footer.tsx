@@ -3,12 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useCookieConsent } from "@app/hooks/useCookieConsent";
 import { useFooterInfo } from "@app/hooks/useFooterInfo";
 import { Button } from "@app/ui/Button";
-import { withBasePath } from "@app/constants/app";
-
-// Bundled Papyra legal pages, served from the app's public assets. Administrators can override
-// these with their own URLs in Settings > Legal.
-const DEFAULT_PRIVACY_URL = withBasePath("/legal/privacy-policy.html");
-const DEFAULT_TERMS_URL = withBasePath("/legal/terms-and-conditions.html");
+import { privacyPolicyUrl, termsUrl } from "@app/constants/siteLinks";
 
 interface FooterProps {
   privacyPolicy?: string;
@@ -52,10 +47,10 @@ export default function Footer({
     !!url && url.trim().length > 0 && !/stirling\.com/i.test(url);
   const finalTermsUrl = isConfiguredLegalUrl(finalTermsAndConditions)
     ? finalTermsAndConditions!
-    : DEFAULT_TERMS_URL;
+    : termsUrl();
   const finalPrivacyUrl = isConfiguredLegalUrl(finalPrivacyPolicy)
     ? finalPrivacyPolicy!
-    : DEFAULT_PRIVACY_URL;
+    : privacyPolicyUrl();
 
   // Helper to check if a value is valid (not null/undefined/empty string)
   const isValidLink = (link?: string) => link && link.trim().length > 0;
