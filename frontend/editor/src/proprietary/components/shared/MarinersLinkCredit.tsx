@@ -1,4 +1,4 @@
-import marinersLinkLogo from "@app/assets/marinerslink-logo.svg";
+import marinersLinkLogo from "@app/assets/marinerslink-logo.png";
 
 /**
  * "Developed by MarinersLink.com" credit shown at the bottom of the login
@@ -26,9 +26,9 @@ export default function MarinersLinkCredit() {
         <img
           src={marinersLinkLogo}
           alt="MarinersLink"
-          width={18}
-          height={18}
-          style={{ display: "block" }}
+          width={20}
+          height={20}
+          style={{ display: "block", borderRadius: "50%" }}
         />
         <span>
           Developed by{" "}
