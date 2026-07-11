@@ -6,7 +6,7 @@ import LocalIcon from "@app/components/shared/LocalIcon";
 import { useAppConfig } from "@app/contexts/AppConfigContext";
 import { useFooterInfo } from "@app/hooks/useFooterInfo";
 import { useCookieConsent } from "@app/hooks/useCookieConsent";
-import { withBasePath } from "@app/constants/app";
+import { privacyPolicyUrl, termsUrl } from "@app/constants/siteLinks";
 
 interface LegalLink {
   key: string;
@@ -47,14 +47,14 @@ const LegalSection: React.FC = () => {
       label: t("legal.privacy", "Privacy Policy"),
       href: isConfiguredLegalUrl(privacyPolicy)
         ? privacyPolicy!
-        : withBasePath("/legal/privacy-policy.html"),
+        : privacyPolicyUrl(),
     },
     {
       key: "terms",
       label: t("legal.terms", "Terms and Conditions"),
       href: isConfiguredLegalUrl(termsAndConditions)
         ? termsAndConditions!
-        : withBasePath("/legal/terms-and-conditions.html"),
+        : termsUrl(),
     },
     ...(isValidLink(accessibilityStatement)
       ? [

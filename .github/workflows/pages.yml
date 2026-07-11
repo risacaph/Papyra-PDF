@@ -1,0 +1,61 @@
+name: Publish docs & legal to GitHub Pages
+
+# Publishes the bundled Papyra documentation and legal pages to GitHub Pages so the
+# desktop app (which opens links in the OS browser) can reach them at absolute URLs:
+#   https://risacaph.github.io/Papyra-PDF/docs/
+#   https://risacaph.github.io/Papyra-PDF/legal/privacy-policy.html
+#
+# One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/editor/public/docs/**"
+      - "frontend/editor/public/legal/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site/docs _site/legal
+          cp -r frontend/editor/public/docs/. _site/docs/
+          cp -r frontend/editor/public/legal/. _site/legal/
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <meta charset="utf-8" />
+          <title>Papyra</title>
+          <meta http-equiv="refresh" content="0; url=docs/" />
+          <a href="docs/">Papyra documentation</a>
+          EOF
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -4,7 +4,8 @@ import { Button } from "@app/ui/Button";
 import { useTranslation } from "react-i18next";
 import LocalIcon from "@app/components/shared/LocalIcon";
 import { requestStartTour } from "@app/constants/events";
-import { withBasePath } from "@app/constants/app";
+import { openExternal } from "@app/platform/openExternal";
+import { docsUrl } from "@app/constants/siteLinks";
 
 interface HelpSectionProps {
   isAdmin: boolean;
@@ -47,13 +48,7 @@ const HelpSection: React.FC<HelpSectionProps> = ({
                 height="1rem"
               />
             }
-            onClick={() =>
-              window.open(
-                withBasePath("/docs/"),
-                "_blank",
-                "noopener,noreferrer",
-              )
-            }
+            onClick={() => void openExternal(docsUrl())}
           >
             {t("settings.help.gettingStarted.open", "Open docs")}
           </Button>
