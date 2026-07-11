@@ -9007,6 +9007,11 @@ description = "Explore team management, system settings, and enterprise features
 start = "Start"
 title = "Admin Tour"
 
+[settings.help.gettingStarted]
+description = "Read the documentation to learn how to get the most out of the app."
+open = "Open docs"
+title = "Getting Started"
+
 [settings.help.toolsTour]
 description = "Walk through uploading files, picking a tool, and reviewing results."
 start = "Start"
