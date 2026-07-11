@@ -39,13 +39,11 @@ export default function Footer({
     analyticsEnabled: finalAnalyticsEnabled,
   });
 
-  // Default URLs
-  const defaultTermsUrl = "https://www.stirling.com/terms";
-  const defaultPrivacyUrl = "https://www.stirling.com/privacy";
-
-  // Use provided URLs or fall back to defaults
-  const finalTermsUrl = finalTermsAndConditions || defaultTermsUrl;
-  const finalPrivacyUrl = finalPrivacyPolicy || defaultPrivacyUrl;
+  // Privacy Policy and Terms links point wherever the administrator configures them in
+  // Settings > Legal. Self-hosted builds ship no default legal pages, so the links are simply
+  // hidden until a URL is set (rather than pointing at a third-party site).
+  const finalTermsUrl = finalTermsAndConditions;
+  const finalPrivacyUrl = finalPrivacyPolicy;
 
   // Helper to check if a value is valid (not null/undefined/empty string)
   const isValidLink = (link?: string) => link && link.trim().length > 0;
@@ -70,22 +68,26 @@ export default function Footer({
           fontSize: "0.75rem",
         }}
       >
-        <a
-          className="footer-link px-3"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={finalPrivacyUrl}
-        >
-          {t("legal.privacy", "Privacy Policy")}
-        </a>
-        <a
-          className="footer-link px-3"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={finalTermsUrl}
-        >
-          {t("legal.terms", "Terms and Conditions")}
-        </a>
+        {isValidLink(finalPrivacyUrl) && (
+          <a
+            className="footer-link px-3"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={finalPrivacyUrl}
+          >
+            {t("legal.privacy", "Privacy Policy")}
+          </a>
+        )}
+        {isValidLink(finalTermsUrl) && (
+          <a
+            className="footer-link px-3"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={finalTermsUrl}
+          >
+            {t("legal.terms", "Terms and Conditions")}
+          </a>
+        )}
         <a
           className="footer-link px-3"
           target="_blank"
@@ -98,7 +100,7 @@ export default function Footer({
           className="footer-link px-3"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/Stirling-Tools/Stirling-PDF"
+          href="https://github.com/risacaph/Papyra-PDF"
         >
           {t("footer.issues", "GitHub")}
         </a>

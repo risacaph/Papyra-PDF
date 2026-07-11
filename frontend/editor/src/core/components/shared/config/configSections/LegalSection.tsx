@@ -35,20 +35,26 @@ const LegalSection: React.FC = () => {
   const isValidLink = (link?: string) => link && link.trim().length > 0;
 
   const legalLinks: LegalLink[] = [
-    {
-      key: "privacy",
-      label: t("legal.privacy", "Privacy Policy"),
-      href: isValidLink(privacyPolicy)
-        ? privacyPolicy!
-        : "https://www.stirling.com/privacy",
-    },
-    {
-      key: "terms",
-      label: t("legal.terms", "Terms and Conditions"),
-      href: isValidLink(termsAndConditions)
-        ? termsAndConditions!
-        : "https://www.stirling.com/terms",
-    },
+    // Privacy/Terms are shown only when the administrator has configured a URL (Settings > Legal);
+    // self-hosted builds ship no default legal pages, so there is no third-party fallback.
+    ...(isValidLink(privacyPolicy)
+      ? [
+          {
+            key: "privacy",
+            label: t("legal.privacy", "Privacy Policy"),
+            href: privacyPolicy!,
+          },
+        ]
+      : []),
+    ...(isValidLink(termsAndConditions)
+      ? [
+          {
+            key: "terms",
+            label: t("legal.terms", "Terms and Conditions"),
+            href: termsAndConditions!,
+          },
+        ]
+      : []),
     ...(isValidLink(accessibilityStatement)
       ? [
           {
