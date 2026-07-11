@@ -1,0 +1,28 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MarinersLink">
+  <!-- Papyra-neutral recreation of the MarinersLink nautical badge. Swap this file
+       for the exact MarinersLink PNG/SVG if desired (keep the same import path). -->
+  <circle cx="32" cy="32" r="30" fill="#1f4b8e"/>
+  <circle cx="32" cy="32" r="24" fill="#ffffff"/>
+  <!-- compass points -->
+  <g fill="#1f4b8e">
+    <polygon points="32,4 35,15 29,15"/>
+    <polygon points="32,60 35,49 29,49"/>
+    <polygon points="4,32 15,29 15,35"/>
+    <polygon points="60,32 49,29 49,35"/>
+    <polygon points="12,12 22,20 20,22" opacity="0.75"/>
+    <polygon points="52,12 42,20 44,22" opacity="0.75"/>
+    <polygon points="12,52 22,44 20,42" opacity="0.75"/>
+    <polygon points="52,52 42,44 44,42" opacity="0.75"/>
+  </g>
+  <!-- anchor -->
+  <g fill="none" stroke="#1f4b8e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="17.5" r="3.2" fill="#ffffff"/>
+    <line x1="32" y1="20.7" x2="32" y2="45"/>
+    <line x1="24.5" y1="27" x2="39.5" y2="27"/>
+    <path d="M20.5 37.5 A11.5 11.5 0 0 0 43.5 37.5"/>
+    <line x1="20.5" y1="37.5" x2="17.8" y2="34"/>
+    <line x1="20.5" y1="37.5" x2="24.4" y2="34.6"/>
+    <line x1="43.5" y1="37.5" x2="46.2" y2="34"/>
+    <line x1="43.5" y1="37.5" x2="39.6" y2="34.6"/>
+  </g>
+</svg>
