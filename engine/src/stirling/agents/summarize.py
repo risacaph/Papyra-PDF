@@ -45,9 +45,6 @@ class SummarizeAgent:
             system_prompt=_system_prompt(request.max_words),
             model_settings=self.runtime.smart_model_settings,
         )
-        prompt = (
-            f"Document file name: {request.file_name}\n\n"
-            f"Document content:\n{_format_pages(request.pages)}"
-        )
+        prompt = f"Document file name: {request.file_name}\n\nDocument content:\n{_format_pages(request.pages)}"
         result = await agent.run(prompt)
         return result.output

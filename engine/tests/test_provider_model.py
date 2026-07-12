@@ -18,9 +18,7 @@ def test_openai_builds_openai_chat_model() -> None:
 
 def test_anthropic_builds_anthropic_model() -> None:
     model = build_provider_model(
-        ProviderConfig(
-            provider=AiProvider.anthropic, model="claude-haiku-4-5", api_key=SecretStr("sk-test")
-        )
+        ProviderConfig(provider=AiProvider.anthropic, model="claude-haiku-4-5", api_key=SecretStr("sk-test"))
     )
     assert isinstance(model, AnthropicModel)
 
