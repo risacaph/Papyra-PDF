@@ -6,6 +6,7 @@ from .progress import (
     reset_progress_emitter,
     set_progress_emitter,
 )
+from .provider_model import build_provider_model
 from .runtime import AppRuntime, build_model_settings, build_runtime
 from .tracking import current_user_id, require_current_user_id, setup_posthog_tracking
 
@@ -13,6 +14,7 @@ __all__ = [
     "AppRuntime",
     "ProgressEmitter",
     "build_model_settings",
+    "build_provider_model",
     "build_runtime",
     "current_user_id",
     "emit_progress",

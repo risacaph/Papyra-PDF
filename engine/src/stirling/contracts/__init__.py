@@ -118,6 +118,12 @@ from .progress import (
     WholeDocReadStarted,
     WholeDocSliceDone,
 )
+from .summarize import (
+    AiProvider,
+    ProviderConfig,
+    SummarizeRequest,
+    SummarizeResponse,
+)
 
 __all__ = [
     "AgentDraft",
@@ -131,6 +137,7 @@ __all__ = [
     "AgentSpec",
     "AgentSpecStep",
     "AiFile",
+    "AiProvider",
     "AiToolAgentStep",
     "ArtifactKind",
     "CannotContinueExecutionAction",
@@ -200,9 +207,12 @@ __all__ = [
     "PdfReviewOrchestrateResponse",
     "PdfTextSelection",
     "ProgressEvent",
+    "ProviderConfig",
     "Requisition",
     "Severity",
     "StepKind",
+    "SummarizeRequest",
+    "SummarizeResponse",
     "SupportedCapability",
     "TextChunk",
     "ToolCallExecutionAction",

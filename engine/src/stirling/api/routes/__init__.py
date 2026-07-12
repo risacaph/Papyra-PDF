@@ -8,6 +8,7 @@ from .orchestrator import router as orchestrator_router
 from .pdf_comments import router as pdf_comments_router
 from .pdf_edit import router as pdf_edit_router
 from .pdf_questions import router as pdf_question_router
+from .summarize import router as summarize_router
 
 __all__ = [
     "agent_capabilities_router",
@@ -20,4 +21,5 @@ __all__ = [
     "pdf_comments_router",
     "pdf_edit_router",
     "pdf_question_router",
+    "summarize_router",
 ]
