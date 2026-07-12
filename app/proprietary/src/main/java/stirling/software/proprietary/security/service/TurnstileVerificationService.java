@@ -36,16 +36,8 @@ public class TurnstileVerificationService {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public TurnstileVerificationService(ApplicationProperties applicationProperties) {
-        this(
-                applicationProperties,
-                HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5)).build());
-    }
-
-    /** Package-private: lets tests inject a stub {@link HttpClient}. */
-    TurnstileVerificationService(
-            ApplicationProperties applicationProperties, HttpClient httpClient) {
         this.applicationProperties = applicationProperties;
-        this.httpClient = httpClient;
+        this.httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5)).build();
     }
 
     private ApplicationProperties.Security.Turnstile config() {
