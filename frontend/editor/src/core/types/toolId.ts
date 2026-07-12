@@ -54,6 +54,7 @@ export const CORE_REGULAR_TOOL_IDS = [
   "extractImages",
   "extractTablesCsv",
   "addStamp",
+  "addQrCode",
   "addAttachments",
   "changeMetadata",
   "overlayPdfs",

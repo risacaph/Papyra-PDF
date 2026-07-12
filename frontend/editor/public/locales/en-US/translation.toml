@@ -369,6 +369,52 @@ title = "Password Types"
 text = "These permissions control what users can do with the PDF. Most effective when combined with an owner password."
 title = "Change Permissions"
 
+[addQrCode]
+submit = "Add QR code"
+title = "Add QR Code"
+
+[addQrCode.error]
+failed = "An error occurred while adding the QR code to the PDF."
+
+[addQrCode.labels]
+settings = "Settings"
+
+[addQrCode.settings]
+contentDescription = "The text or link to encode in the QR code."
+contentLabel = "Text or URL"
+note = "The QR code is generated locally and stamped onto every selected page."
+pagesDescription = "Which pages to stamp. Use 'all', a list, or ranges (e.g. 1,3,5-9)."
+pagesLabel = "Pages"
+positionLabel = "Position"
+sizeDescription = "Width and height of the QR code square on the page."
+sizeLabel = "Size (points)"
+
+[addQrCode.settings.positions]
+bottomCenter = "Bottom center"
+bottomLeft = "Bottom left"
+bottomRight = "Bottom right"
+middleCenter = "Middle center"
+middleLeft = "Middle left"
+middleRight = "Middle right"
+topCenter = "Top center"
+topLeft = "Top left"
+topRight = "Top right"
+
+[addQrCode.tooltip.description]
+text = "Generate a QR code from any text or URL and stamp it onto the PDF. The code is created locally, so nothing is sent to a third-party service."
+title = "Description"
+
+[addQrCode.tooltip.header]
+title = "Add QR Code Overview"
+
+[addQrCode.tooltip.placement]
+text = "Choose one of nine positions and a size in points. The code is added to every selected page, leaving existing content untouched."
+title = "Placement"
+
+[addQrCode.tooltip.uses]
+text = "Link to a website, encode a document reference, or add contact details that can be scanned from a printed page."
+title = "Common uses"
+
 [addStamp]
 tags = "stamp,mark,seal,approved,rejected,confidential,stamp tool,rubber stamp,date stamp,approval stamp,received,void,copy,original"
 
@@ -4371,6 +4417,11 @@ title = "Add Page Numbers"
 desc = "Add password protection and restrictions to PDF files"
 tags = "encrypt,password,lock,secure,protect,security,encryption,safeguard,confidential,private,restrict access"
 title = "Add Password"
+
+[home.addQrCode]
+desc = "Generate a QR code from text or a URL and stamp it onto the PDF"
+tags = "qr,qr code,qrcode,barcode,generate qr,add qr,link,url,scan,stamp qr,contact"
+title = "Add QR Code"
 
 [home.addStamp]
 desc = "Add text or add image stamps at set locations"

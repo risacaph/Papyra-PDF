@@ -62,6 +62,7 @@ const TOOL_IDS = [
   "extractImages",
   "extractTablesCsv",
   "addStamp",
+  "addQrCode",
   "addAttachments",
   "changeMetadata",
   "overlayPdfs",

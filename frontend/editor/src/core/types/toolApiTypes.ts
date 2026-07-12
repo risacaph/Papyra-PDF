@@ -107,6 +107,24 @@ export interface AddPasswordRequest {
    */
   preventPrintingFaithful?: boolean;
 }
+export interface AddQrCodeRequest {
+  /**
+   * The text or URL to encode in the QR code
+   */
+  content: string;
+  /**
+   * The pages to select, Supports ranges (e.g., '1,3,5-9'), or 'all' or functions in the format 'an+b' where 'a' is the multiplier of the page number 'n', and 'b' is a constant (e.g., '2n+1', '3n', '6n-5')
+   */
+  pageNumbers?: string;
+  /**
+   * Position for the QR code based on a 1-9 grid (1=top-left, 2=top-center, 3=top-right, 4=middle-left, 5=middle-center, 6=middle-right, 7=bottom-left, 8=bottom-center, 9=bottom-right)
+   */
+  position?: number;
+  /**
+   * Size of the QR code square, in PDF points
+   */
+  size?: number;
+}
 export interface AddStampRequest {
   /**
    * The selected alphabet of the stamp text
@@ -1377,6 +1395,7 @@ export type ToolEndpoint =
   | "/api/v1/misc/add-comments"
   | "/api/v1/misc/add-image"
   | "/api/v1/misc/add-page-numbers"
+  | "/api/v1/misc/add-qr-code"
   | "/api/v1/misc/add-stamp"
   | "/api/v1/misc/auto-rename"
   | "/api/v1/misc/auto-split-pdf"
@@ -1468,6 +1487,7 @@ export interface ToolApiParams {
   "/api/v1/misc/add-comments": AddCommentsRequest;
   "/api/v1/misc/add-image": OverlayImageRequest;
   "/api/v1/misc/add-page-numbers": AddPageNumbersRequest;
+  "/api/v1/misc/add-qr-code": AddQrCodeRequest;
   "/api/v1/misc/add-stamp": AddStampRequest;
   "/api/v1/misc/auto-rename": ExtractHeaderRequest;
   "/api/v1/misc/auto-split-pdf": AutoSplitPdfRequest;
@@ -1560,6 +1580,7 @@ export const TOOL_ENDPOINTS = [
   "/api/v1/misc/add-comments",
   "/api/v1/misc/add-image",
   "/api/v1/misc/add-page-numbers",
+  "/api/v1/misc/add-qr-code",
   "/api/v1/misc/add-stamp",
   "/api/v1/misc/auto-rename",
   "/api/v1/misc/auto-split-pdf",

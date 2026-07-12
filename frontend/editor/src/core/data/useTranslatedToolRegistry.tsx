@@ -51,6 +51,7 @@ import { cropOperationConfig } from "@app/hooks/tools/crop/useCropOperation";
 import { removeAnnotationsOperationConfig } from "@app/hooks/tools/removeAnnotations/useRemoveAnnotationsOperation";
 import { extractImagesOperationConfig } from "@app/hooks/tools/extractImages/useExtractImagesOperation";
 import { extractTablesCsvOperationConfig } from "@app/hooks/tools/extractTablesCsv/useExtractTablesCsvOperation";
+import { addQrCodeOperationConfig } from "@app/hooks/tools/addQrCode/useAddQrCodeOperation";
 import { replaceColorOperationConfig } from "@app/hooks/tools/replaceColor/useReplaceColorOperation";
 import { grayscaleOperationConfig } from "@app/hooks/tools/grayscale/useGrayscaleOperation";
 import { removePagesOperationConfig } from "@app/hooks/tools/removePages/useRemovePagesOperation";
@@ -374,6 +375,26 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
           () =>
             import("@app/components/tools/addStamp/AddStampAutomationSettings"),
         ),
+      },
+      addQrCode: {
+        icon: (
+          <LocalIcon icon="qr-code-rounded" width="1.5rem" height="1.5rem" />
+        ),
+        name: t("home.addQrCode.title", "Add QR Code"),
+        component: lazy(() => import("@app/tools/AddQrCode")),
+        description: t(
+          "home.addQrCode.desc",
+          "Generate a QR code from text or a URL and stamp it onto the PDF",
+        ),
+        categoryId: ToolCategoryId.STANDARD_TOOLS,
+        subcategoryId: SubcategoryId.DOCUMENT_SECURITY,
+        maxFiles: -1,
+        endpoints: ["add-qr-code"],
+        operationConfig: asRegistryConfig(addQrCodeOperationConfig),
+        automationSettings: lazySettings(
+          () => import("@app/components/tools/addQrCode/AddQrCodeSettings"),
+        ),
+        synonyms: getSynonyms(t, "addQrCode"),
       },
       sanitize: {
         icon: (
