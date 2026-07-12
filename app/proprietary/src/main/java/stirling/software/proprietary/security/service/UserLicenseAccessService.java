@@ -102,6 +102,18 @@ public class UserLicenseAccessService {
         return userRepository.save(user);
     }
 
+    /**
+     * Sets the user's tier and an explicit expiry. Used when redeeming a license key, which may
+     * carry a custom duration that differs from the tier's plan default. A {@code null} expiry
+     * means the access never lapses.
+     */
+    @Transactional
+    public User applyGrant(User user, LicenseTier tier, LocalDateTime expiresAt) {
+        user.setLicenseTier(tier.name());
+        user.setLicenseExpiresAt(expiresAt);
+        return userRepository.save(user);
+    }
+
     /** The minimum tier required to use the tool addressed by the given request path. */
     public LicenseTier requiredTierForPath(String path) {
         String p = path == null ? "" : path.toLowerCase(Locale.ROOT);

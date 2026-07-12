@@ -21,6 +21,7 @@ import {
   userManagementService,
   type PlanDefinition,
 } from "@app/services/userManagementService";
+import { AdminLicenseKeys } from "@app/components/shared/config/configSections/AdminLicenseKeys";
 
 const DEFAULT_DURATION_MONTHS = 12;
 
@@ -254,7 +255,7 @@ const AdminPlanSection: React.FC = () => {
           <Text c="dimmed" size="xs">
             {t(
               "settings.plan.editor.maxDevicesNote",
-              "Device limits are saved now; enforcement at sign-in arrives in an upcoming update.",
+              "Device limits are enforced at sign-in: a user on this plan can be signed in on at most this many devices at once.",
             )}
           </Text>
           <Divider />
@@ -266,6 +267,8 @@ const AdminPlanSection: React.FC = () => {
           </Text>
         </Stack>
       </Paper>
+
+      <AdminLicenseKeys />
     </Stack>
   );
 };

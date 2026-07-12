@@ -30,6 +30,17 @@ function ensureLoaded(): void {
 }
 
 /**
+ * Discards the cached license and re-fetches it, notifying every {@link useUserLicense} consumer.
+ * Call after an action that changes the current user's plan (e.g. redeeming a license key) so the
+ * UI reflects the new tier without a full reload.
+ */
+export function refreshUserLicense(): void {
+  cachedLicense = null;
+  inFlight = null;
+  ensureLoaded();
+}
+
+/**
  * The current user's admin-managed access license, or null until it has loaded (or if it could not
  * be read). Backed by a shared module-level cache so many callers trigger only one request.
  */

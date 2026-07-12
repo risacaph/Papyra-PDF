@@ -19,6 +19,7 @@ import { alert as showToast } from "@app/components/toast";
 import { useAuth } from "@app/auth/UseSession";
 import { accountService } from "@app/services/accountService";
 import { AccountDevices } from "@app/components/shared/config/configSections/AccountDevices";
+import { AccountRedeemKey } from "@app/components/shared/config/configSections/AccountRedeemKey";
 import { Z_INDEX_OVER_CONFIG_MODAL } from "@app/styles/zIndex";
 import { QRCodeSVG } from "qrcode.react";
 import { useAccountLogout } from "@app/extensions/accountLogout";
@@ -432,6 +433,8 @@ const AccountSection: React.FC = () => {
           </Stack>
         </Paper>
       )}
+
+      <AccountRedeemKey />
 
       <AccountDevices />
 
