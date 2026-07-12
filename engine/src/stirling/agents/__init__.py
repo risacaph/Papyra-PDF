@@ -7,6 +7,7 @@ from .pdf_create import PdfCreateAgent
 from .pdf_edit import PdfEditAgent, PdfEditParameterSelector, PdfEditPlanSelection
 from .pdf_questions import PdfQuestionAgent
 from .pdf_review import PdfReviewAgent
+from .summarize import SummarizeAgent
 from .user_spec import UserSpecAgent
 
 __all__ = [
@@ -19,5 +20,6 @@ __all__ = [
     "PdfEditPlanSelection",
     "PdfQuestionAgent",
     "PdfReviewAgent",
+    "SummarizeAgent",
     "UserSpecAgent",
 ]

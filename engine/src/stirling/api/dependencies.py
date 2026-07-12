@@ -10,6 +10,7 @@ from stirling.agents import (
     OrchestratorAgent,
     PdfEditAgent,
     PdfQuestionAgent,
+    SummarizeAgent,
     UserSpecAgent,
 )
 from stirling.agents.ledger import MathAuditorAgent
@@ -58,6 +59,10 @@ def get_pdf_comment_agent(request: Request) -> PdfCommentAgent:
 
 def get_document_classifier_agent(request: Request) -> DocumentClassifierAgent:
     return request.app.state.document_classifier_agent
+
+
+def get_summarize_agent(request: Request) -> SummarizeAgent:
+    return request.app.state.summarize_agent
 
 
 def require_user_id() -> UserId:
