@@ -215,6 +215,11 @@
       "title": "Add Stamp to PDF - Stirling PDF",
       "description": "Add text or add image stamps at set locations"
     },
+    "addQrCode": {
+      "image": "/og_images/home.png",
+      "title": "Add QR Code - Stirling PDF",
+      "description": "Generate a QR code from text or a URL and stamp it onto the PDF"
+    },
     "addAttachments": {
       "image": "/og_images/add-attachments.png",
       "title": "Add Attachments - Stirling PDF",
@@ -559,6 +564,7 @@
     "/extract-images": "extractImages",
     "/extract-tables-csv": "extractTablesCsv",
     "/add-stamp": "addStamp",
+    "/add-qr-code": "addQrCode",
     "/add-attachments": "addAttachments",
     "/change-metadata": "changeMetadata",
     "/overlay-pdfs": "overlayPdfs",

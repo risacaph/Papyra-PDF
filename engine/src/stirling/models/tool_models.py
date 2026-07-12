@@ -114,6 +114,21 @@ class AddPasswordParams(ApiModel):
     prevent_printing_faithful: bool = Field(False, description="Whether faithful printing is prevented")
 
 
+class AddQrCodeParams(ApiModel):
+    content: str = Field(..., description="The text or URL to encode in the QR code")
+    page_numbers: str = Field(
+        "all",
+        description="The pages to select, Supports ranges (e.g., '1,3,5-9'), or 'all' or functions in the format 'an+b' where 'a' is the multiplier of the page number 'n', and 'b' is a constant (e.g., '2n+1', '3n', '6n-5')",
+    )
+    position: int = Field(
+        9,
+        description="Position for the QR code based on a 1-9 grid (1=top-left, 2=top-center, 3=top-right, 4=middle-left, 5=middle-center, 6=middle-right, 7=bottom-left, 8=bottom-center, 9=bottom-right)",
+        ge=1,
+        le=9,
+    )
+    size: int = Field(100, description="Size of the QR code square, in PDF points", ge=20)
+
+
 class Alphabet(StrEnum):
     """
     The selected alphabet of the stamp text
@@ -1434,6 +1449,7 @@ class Model(
         | SplitPdfBySectionsParams
         | AddCommentsParams
         | AddPageNumbersParams
+        | AddQrCodeParams
         | AddStampParams
         | AutoRenameParams
         | AutoSplitPdfParams
@@ -1508,6 +1524,7 @@ class Model(
         | SplitPdfBySectionsParams
         | AddCommentsParams
         | AddPageNumbersParams
+        | AddQrCodeParams
         | AddStampParams
         | AutoRenameParams
         | AutoSplitPdfParams
@@ -1583,6 +1600,7 @@ type ParamToolModel = (
     | SplitPdfBySectionsParams
     | AddCommentsParams
     | AddPageNumbersParams
+    | AddQrCodeParams
     | AddStampParams
     | AutoRenameParams
     | AutoSplitPdfParams
@@ -1659,6 +1677,7 @@ class ToolEndpoint(StrEnum):
     SPLIT_PDF_BY_SECTIONS = "/api/v1/general/split-pdf-by-sections"
     ADD_COMMENTS = "/api/v1/misc/add-comments"
     ADD_PAGE_NUMBERS = "/api/v1/misc/add-page-numbers"
+    ADD_QR_CODE = "/api/v1/misc/add-qr-code"
     ADD_STAMP = "/api/v1/misc/add-stamp"
     AUTO_RENAME = "/api/v1/misc/auto-rename"
     AUTO_SPLIT_PDF = "/api/v1/misc/auto-split-pdf"
@@ -1733,6 +1752,7 @@ OPERATIONS: dict[ToolEndpoint, ParamToolModelType] = {
     ToolEndpoint.SPLIT_PDF_BY_SECTIONS: SplitPdfBySectionsParams,
     ToolEndpoint.ADD_COMMENTS: AddCommentsParams,
     ToolEndpoint.ADD_PAGE_NUMBERS: AddPageNumbersParams,
+    ToolEndpoint.ADD_QR_CODE: AddQrCodeParams,
     ToolEndpoint.ADD_STAMP: AddStampParams,
     ToolEndpoint.AUTO_RENAME: AutoRenameParams,
     ToolEndpoint.AUTO_SPLIT_PDF: AutoSplitPdfParams,

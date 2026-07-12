@@ -426,6 +426,7 @@ public class EndpointConfiguration {
         addEndpointToGroup("Advance", "scanner-effect");
         addEndpointToGroup("Advance", "overlay-pdf");
         addEndpointToGroup("Advance", "pdf-to-grayscale");
+        addEndpointToGroup("Advance", "add-qr-code");
         // Backend-only endpoints
         addEndpointToGroup("Advance", "adjust-contrast");
 
@@ -531,6 +532,7 @@ public class EndpointConfiguration {
         addEndpointToGroup("Java", "verify-pdf");
         addEndpointToGroup("Java", "flatten");
         addEndpointToGroup("Java", "pdf-to-grayscale");
+        addEndpointToGroup("Java", "add-qr-code");
         addEndpointToGroup("Java", "unlock-pdf-forms");
         addEndpointToGroup("Java", "validate-signature");
         addEndpointToGroup("Java", "text-editor-pdf");

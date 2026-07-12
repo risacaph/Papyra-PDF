@@ -79,6 +79,7 @@ const ALL_BACKEND_ENDPOINTS = [
   "repair",
   "compare",
   "add-page-numbers",
+  "add-qr-code",
   "redact",
   "flatten",
   "remove-cert-sign",
