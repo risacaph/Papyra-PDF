@@ -245,6 +245,11 @@
       "title": "Replace & Invert Color - Stirling PDF",
       "description": "Replace or invert colors in PDF documents"
     },
+    "grayscale": {
+      "image": "/og_images/home.png",
+      "title": "Grayscale / Ink-Saver - Stirling PDF",
+      "description": "Convert a PDF to grayscale to save ink when printing"
+    },
     "showJS": {
       "image": "/og_images/show-javascript.png",
       "title": "Show JavaScript - Stirling PDF",
@@ -555,6 +560,7 @@
     "/validate-signature": "validateSignature",
     "/timestamp-pdf": "timestampPdf",
     "/replace-color": "replaceColor",
+    "/grayscale": "grayscale",
     "/show-j-s": "showJS",
     "/booklet-imposition": "bookletImposition",
     "/pdf-text-editor": "pdfTextEditor",
