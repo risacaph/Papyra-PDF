@@ -102,6 +102,7 @@ const ALL_BACKEND_ENDPOINTS = [
   "validate-signature",
   "timestamp-pdf",
   "replace-color",
+  "grayscale",
   "show-j-s",
   "booklet-imposition",
   "pdf-text-editor",

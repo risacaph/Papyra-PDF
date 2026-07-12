@@ -51,6 +51,7 @@ import { cropOperationConfig } from "@app/hooks/tools/crop/useCropOperation";
 import { removeAnnotationsOperationConfig } from "@app/hooks/tools/removeAnnotations/useRemoveAnnotationsOperation";
 import { extractImagesOperationConfig } from "@app/hooks/tools/extractImages/useExtractImagesOperation";
 import { replaceColorOperationConfig } from "@app/hooks/tools/replaceColor/useReplaceColorOperation";
+import { grayscaleOperationConfig } from "@app/hooks/tools/grayscale/useGrayscaleOperation";
 import { removePagesOperationConfig } from "@app/hooks/tools/removePages/useRemovePagesOperation";
 import { removeBlanksOperationConfig } from "@app/hooks/tools/removeBlanks/useRemoveBlanksOperation";
 import { overlayPdfsOperationConfig } from "@app/hooks/tools/overlayPdfs/useOverlayPdfsOperation";
@@ -1151,6 +1152,24 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
             import("@app/components/tools/replaceColor/ReplaceColorSettings"),
         ),
         synonyms: getSynonyms(t, "replaceColor"),
+      },
+      grayscale: {
+        icon: <LocalIcon icon="opacity" width="1.5rem" height="1.5rem" />,
+        name: t("home.grayscale.title", "Grayscale / Ink-Saver"),
+        component: lazy(() => import("@app/tools/Grayscale")),
+        description: t(
+          "home.grayscale.desc",
+          "Convert a PDF to grayscale to save ink when printing",
+        ),
+        categoryId: ToolCategoryId.ADVANCED_TOOLS,
+        subcategoryId: SubcategoryId.ADVANCED_FORMATTING,
+        maxFiles: -1,
+        endpoints: ["pdf-to-grayscale"],
+        operationConfig: asRegistryConfig(grayscaleOperationConfig),
+        automationSettings: lazySettings(
+          () => import("@app/components/tools/grayscale/GrayscaleSettings"),
+        ),
+        synonyms: getSynonyms(t, "grayscale"),
       },
       scannerEffect: {
         icon: (

@@ -476,6 +476,12 @@ export interface GeneralExtractBookmarksRequest {
 export type GeneralFile = Record<string, never>;
 export type GeneralPdfToSinglePageRequest = Record<string, never>;
 export type GeneralRemoveImagePdfRequest = Record<string, never>;
+export interface GrayscaleRequest {
+  /**
+   * Rendering resolution in DPI used to rasterize each page
+   */
+  dpi?: number;
+}
 export interface HTMLToPdfRequest {
   /**
    * Zoom level for displaying the website. Default is '1'.
@@ -1383,6 +1389,7 @@ export type ToolEndpoint =
   | "/api/v1/misc/flatten"
   | "/api/v1/misc/list-attachments"
   | "/api/v1/misc/ocr-pdf"
+  | "/api/v1/misc/pdf-to-grayscale"
   | "/api/v1/misc/remove-blanks"
   | "/api/v1/misc/rename-attachment"
   | "/api/v1/misc/repair"
@@ -1473,6 +1480,7 @@ export interface ToolApiParams {
   "/api/v1/misc/flatten": FlattenRequest;
   "/api/v1/misc/list-attachments": ListAttachmentsRequest;
   "/api/v1/misc/ocr-pdf": ProcessPdfWithOcrRequest;
+  "/api/v1/misc/pdf-to-grayscale": GrayscaleRequest;
   "/api/v1/misc/remove-blanks": RemoveBlankPagesRequest;
   "/api/v1/misc/rename-attachment": RenameAttachmentRequest;
   "/api/v1/misc/repair": MiscRepairRequest;
@@ -1564,6 +1572,7 @@ export const TOOL_ENDPOINTS = [
   "/api/v1/misc/flatten",
   "/api/v1/misc/list-attachments",
   "/api/v1/misc/ocr-pdf",
+  "/api/v1/misc/pdf-to-grayscale",
   "/api/v1/misc/remove-blanks",
   "/api/v1/misc/rename-attachment",
   "/api/v1/misc/repair",
