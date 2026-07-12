@@ -4213,6 +4213,36 @@ javaScript = "JavaScript"
 layers = "Layers"
 multimedia = "Multimedia"
 
+[grayscale]
+submit = "Convert to grayscale"
+title = "Grayscale / Ink-Saver"
+
+[grayscale.error]
+failed = "An error occurred while converting the PDF to grayscale."
+
+[grayscale.labels]
+settings = "Settings"
+
+[grayscale.settings]
+dpiDescription = "Higher DPI sharpens output but increases processing time and file size."
+dpiLabel = "Resolution (DPI)"
+note = "Every page is rasterised and rebuilt in grayscale, removing colour to save ink when printing."
+
+[grayscale.tooltip.description]
+text = "Convert a colour PDF into a grayscale document. Each page is rasterised and rebuilt as a single grayscale image, so colour is removed everywhere it appears."
+title = "Description"
+
+[grayscale.tooltip.dpi]
+text = "Controls how sharply each page is rendered. Higher values keep more detail but produce larger files and take longer to process."
+title = "Resolution (DPI)"
+
+[grayscale.tooltip.header]
+title = "Grayscale / Ink-Saver Overview"
+
+[grayscale.tooltip.inkSaver]
+text = "Removing colour reduces the coloured ink or toner used when printing, which is useful for drafts and internal copies."
+title = "Ink Saver"
+
 [groupSigning.steps]
 back = "Back"
 completed = "Completed"
@@ -4438,6 +4468,11 @@ title = "Fill Form"
 desc = "Grabs any and all information possible on PDFs"
 tags = "info,metadata,details,PDF info,document info,properties,file info,get info,show info,view properties,document properties,statistics,page count,file details,inspect"
 title = "Get ALL Info on PDF"
+
+[home.grayscale]
+desc = "Convert a PDF to grayscale to save ink when printing"
+tags = "grayscale,greyscale,black and white,ink saver,ink,toner,monochrome,desaturate,remove color,remove colour,save ink,print friendly,gray,grey"
+title = "Grayscale / Ink-Saver"
 
 [home.manageCertificates]
 tags = "certificates,import,export,manage certificates,digital certificates,certificate management,PFX,P12,keystore,import certificate,export certificate,certificate store,PKI"

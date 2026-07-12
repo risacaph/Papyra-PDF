@@ -68,6 +68,7 @@ const TOOL_IDS = [
   "validateSignature",
   "timestampPdf",
   "replaceColor",
+  "grayscale",
   "showJS",
   "bookletImposition",
   "pdfTextEditor",
