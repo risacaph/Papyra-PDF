@@ -279,6 +279,9 @@ public class ConfigController {
             boolean invitesEnabled = applicationProperties.getMail().isEnableInvites();
             configData.put("enableEmailInvites", smtpEnabled && invitesEnabled);
 
+            // Self-service password reset requires login mode + a configured mail sender.
+            configData.put("passwordResetEnabled", enableLogin && smtpEnabled);
+
             // Storage settings
             boolean storageEnabled = enableLogin && applicationProperties.getStorage().isEnabled();
             boolean sharingEnabled =
