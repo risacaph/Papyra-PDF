@@ -194,6 +194,11 @@ title = "Two-factor authentication"
 logOut = "Log out"
 signedInAs = "Signed in as: {{email}}"
 
+[account.plan]
+description = "View your access plan, manage your devices and redeem a license key."
+navLabel = "My Plan"
+title = "My Plan"
+
 [account.redeem]
 button = "Redeem"
 description = "Have a license key? Enter it to activate or upgrade your plan."

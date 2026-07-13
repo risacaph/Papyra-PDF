@@ -29,6 +29,12 @@ const SETTINGS_SEARCH_TRANSLATION_PREFIXES: Partial<Record<string, string[]>> =
     general: ["settings.general"],
     hotkeys: ["settings.hotkeys"],
     account: ["account"],
+    accountPlan: [
+      "account.plan",
+      "account.license",
+      "account.redeem",
+      "account.devices",
+    ],
     people: ["settings.workspace"],
     teams: ["settings.workspace", "settings.team"],
     "api-keys": ["settings.developer"],

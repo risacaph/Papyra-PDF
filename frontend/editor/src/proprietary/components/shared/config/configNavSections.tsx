@@ -23,6 +23,7 @@ import AdminUsageSection from "@app/components/shared/config/configSections/Admi
 import AdminStorageSharingSection from "@app/components/shared/config/configSections/AdminStorageSharingSection";
 import ApiKeys from "@app/components/shared/config/configSections/ApiKeys";
 import AccountSection from "@app/components/shared/config/configSections/AccountSection";
+import AccountPlanSection from "@app/components/shared/config/configSections/AccountPlanSection";
 import GeneralWithLoginLanding from "@app/components/shared/config/GeneralWithLoginLanding";
 
 /**
@@ -61,6 +62,12 @@ export const useConfigNavSections = (
         label: t("account.accountSettings", "Account"),
         icon: "person-rounded",
         component: <AccountSection />,
+      });
+      preferencesSection.items.push({
+        key: "accountPlan",
+        label: t("account.plan.navLabel", "My Plan"),
+        icon: "workspace-premium-rounded",
+        component: <AccountPlanSection />,
       });
     }
   }
