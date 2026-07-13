@@ -148,3 +148,27 @@
   outline: 2px dashed var(--mantine-color-red-6);
   outline-offset: 4px;
 }
+
+/* ─── Recent files strip ──────────────────────────────────────────────── */
+.landing-recent__card {
+  cursor: pointer;
+}
+.landing-recent__thumb {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+.landing-recent__card:hover .landing-recent__thumb {
+  border-color: var(--accent-interactive);
+  transform: translateY(-2px);
+}
+.landing-recent__card:focus-visible {
+  outline: 2px solid var(--accent-interactive);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
