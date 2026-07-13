@@ -4860,6 +4860,10 @@ openFromComputer = "Open from computer"
 uploadFromComputer = "Upload from computer"
 workbenchEmptyStateHero = "Drop a PDF anywhere"
 
+[landing.recentFiles]
+seeAll = "See all"
+title = "Recent files"
+
 [language]
 direction = "ltr"
 
