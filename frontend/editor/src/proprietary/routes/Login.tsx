@@ -591,6 +591,17 @@ export default function Login() {
                 </Button>
               </div>
             )}
+            {config?.passwordResetEnabled && (
+              <div style={{ textAlign: "center", marginTop: "0.5rem" }}>
+                <Button
+                  variant="tertiary"
+                  onClick={() => navigate("/forgot-password")}
+                  className="auth-link-black"
+                >
+                  {t("login.forgotPassword", "Forgot your password?")}
+                </Button>
+              </div>
+            )}
           </>
         }
       />

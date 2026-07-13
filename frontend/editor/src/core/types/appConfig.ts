@@ -13,6 +13,7 @@ export interface AppConfig {
   enableOAuth?: boolean;
   enableSaml?: boolean;
   registrationEnabled?: boolean;
+  passwordResetEnabled?: boolean;
   turnstileEnabled?: boolean;
   turnstileSiteKey?: string;
   isAdmin?: boolean;
