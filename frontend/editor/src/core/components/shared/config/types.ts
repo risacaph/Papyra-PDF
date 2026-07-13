@@ -6,6 +6,7 @@ export const VALID_NAV_KEYS = [
   "notifications",
   "connections",
   "account",
+  "accountPlan",
   "general",
   "people",
   "teams",

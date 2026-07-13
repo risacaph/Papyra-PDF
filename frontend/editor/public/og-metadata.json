@@ -360,6 +360,11 @@
       "title": "Account Settings - Stirling PDF",
       "description": "The Free Adobe Acrobat alternative (10M+ Downloads)"
     },
+    "/settings/accountPlan": {
+      "image": "/og_images/home.png",
+      "title": "Account Plan Settings - Stirling PDF",
+      "description": "The Free Adobe Acrobat alternative (10M+ Downloads)"
+    },
     "/settings/general": {
       "image": "/og_images/home.png",
       "title": "General Settings - Stirling PDF",
@@ -651,6 +656,7 @@
     "/settings/notifications": "/settings/notifications",
     "/settings/connections": "/settings/connections",
     "/settings/account": "/settings/account",
+    "/settings/accountPlan": "/settings/accountPlan",
     "/settings/general": "/settings/general",
     "/settings/people": "/settings/people",
     "/settings/teams": "/settings/teams",
