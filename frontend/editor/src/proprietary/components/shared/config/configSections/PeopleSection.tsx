@@ -33,8 +33,6 @@ import InviteMembersModal from "@app/components/shared/InviteMembersModal";
 import { useLoginRequired } from "@app/hooks/useLoginRequired";
 import LoginRequiredBanner from "@app/components/shared/config/LoginRequiredBanner";
 import { useNavigate } from "react-router-dom";
-import UpdateSeatsButton from "@app/components/shared/UpdateSeatsButton";
-import { useLicense } from "@app/contexts/LicenseContext";
 import ChangeUserPasswordModal from "@app/components/shared/ChangeUserPasswordModal";
 import { useAuth } from "@app/auth/UseSession";
 
@@ -44,7 +42,6 @@ export default function PeopleSection() {
   const { loginEnabled } = useLoginRequired();
   const { user: currentUser } = useAuth();
   const navigate = useNavigate();
-  const { licenseInfo: globalLicenseInfo } = useLicense();
   const [users, setUsers] = useState<User[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
@@ -569,16 +566,6 @@ export default function PeopleSection() {
               +{licenseInfo.licenseMaxUsers}{" "}
               {t("workspace.people.license.fromLicense", "from license")}
             </Badge>
-          )}
-
-          {/* Enterprise Seat Management Button */}
-          {globalLicenseInfo?.licenseType === "ENTERPRISE" && (
-            <>
-              <Text size="sm" c="dimmed" span>
-                •
-              </Text>
-              <UpdateSeatsButton size="sm" onSuccess={fetchData} />
-            </>
           )}
         </Group>
       )}
