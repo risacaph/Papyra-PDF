@@ -130,8 +130,10 @@ class FormFieldTypeSupportTest {
     }
 
     @Test
-    void doesNotSupportsDefinitionCreation_signatureReturnsTrue() {
-        assertTrue(FormFieldTypeSupport.SIGNATURE.doesNotsupportsDefinitionCreation());
+    void doesNotSupportsDefinitionCreation_signatureReturnsFalse() {
+        // Signature fields can be created (empty/unsigned) from a definition so a PDF can be
+        // prepared for signing via the form builder.
+        assertFalse(FormFieldTypeSupport.SIGNATURE.doesNotsupportsDefinitionCreation());
     }
 
     @Test
