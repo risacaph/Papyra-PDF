@@ -66,6 +66,8 @@ import { translateOperationConfig } from "@app/hooks/tools/translate/useTranslat
 import { formBuilderOperationConfig } from "@app/hooks/tools/formBuilder/useFormBuilderOperation";
 import { insertBlankPagesOperationConfig } from "@app/hooks/tools/insertBlankPages/useInsertBlankPagesOperation";
 import { headersFootersOperationConfig } from "@app/hooks/tools/headersFooters/useHeadersFootersOperation";
+import { linkEditorOperationConfig } from "@app/hooks/tools/linkEditor/useLinkEditorOperation";
+import { accessibilityOperationConfig } from "@app/hooks/tools/accessibility/useAccessibilityOperation";
 import { extractPagesOperationConfig } from "@app/hooks/tools/extractPages/useExtractPagesOperation";
 import { ENDPOINTS as SPLIT_ENDPOINT_NAMES } from "@app/constants/splitConstants";
 import { ToolId } from "@app/types/toolId";
@@ -782,6 +784,52 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
           "running head",
           "title block",
           "date stamp",
+        ],
+      },
+      linkEditor: {
+        icon: <LocalIcon icon="link-rounded" width="1.5rem" height="1.5rem" />,
+        name: t("home.linkEditor.title", "Link Editor"),
+        component: lazy(() => import("@app/tools/LinkEditor")),
+        description: t(
+          "home.linkEditor.desc",
+          "Add or remove hyperlinks by drawing link areas on the page",
+        ),
+        categoryId: ToolCategoryId.STANDARD_TOOLS,
+        subcategoryId: SubcategoryId.GENERAL,
+        maxFiles: 1,
+        operationConfig: asRegistryConfig(linkEditorOperationConfig),
+        automationSettings: null,
+        supportsAutomate: false,
+        synonyms: [
+          "link",
+          "hyperlink",
+          "url",
+          "web link",
+          "internal link",
+          "remove link",
+        ],
+      },
+      accessibility: {
+        icon: <LocalIcon icon="checklist" width="1.5rem" height="1.5rem" />,
+        name: t("home.accessibility.title", "Accessibility"),
+        component: lazy(() => import("@app/tools/Accessibility")),
+        description: t(
+          "home.accessibility.desc",
+          "Check accessibility properties and fix the document title, language and reader preferences",
+        ),
+        categoryId: ToolCategoryId.STANDARD_TOOLS,
+        subcategoryId: SubcategoryId.VERIFICATION,
+        maxFiles: 1,
+        operationConfig: asRegistryConfig(accessibilityOperationConfig),
+        automationSettings: null,
+        supportsAutomate: false,
+        synonyms: [
+          "accessibility",
+          "a11y",
+          "pdf/ua",
+          "screen reader",
+          "tagged pdf",
+          "document title",
         ],
       },
       scalePages: {

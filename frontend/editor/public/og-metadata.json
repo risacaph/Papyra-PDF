@@ -305,6 +305,16 @@
       "title": "Headers & Footers - Stirling PDF",
       "description": "Add text, page numbers or dates to the top and bottom margins of every page."
     },
+    "linkEditor": {
+      "image": "/og_images/home.png",
+      "title": "Link Editor - Stirling PDF",
+      "description": "Add or remove hyperlinks by drawing link areas on the page"
+    },
+    "accessibility": {
+      "image": "/og_images/home.png",
+      "title": "Accessibility - Stirling PDF",
+      "description": "Check accessibility properties and fix the document title, language and reader preferences"
+    },
     "multiTool": {
       "image": "/og_images/multi-tool.png",
       "title": "Multi-Tool - Stirling PDF",
@@ -622,6 +632,8 @@
     "/form-builder": "formBuilder",
     "/insert-blank-pages": "insertBlankPages",
     "/headers-footers": "headersFooters",
+    "/link-editor": "linkEditor",
+    "/accessibility": "accessibility",
     "/multi-tool": "multiTool",
     "/read": "read",
     "/automate": "automate",
