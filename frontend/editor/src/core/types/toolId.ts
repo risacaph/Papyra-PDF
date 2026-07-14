@@ -72,6 +72,8 @@ export const CORE_REGULAR_TOOL_IDS = [
   "formBuilder",
   "insertBlankPages",
   "headersFooters",
+  "linkEditor",
+  "accessibility",
 ] as const;
 
 export const CORE_SUPER_TOOL_IDS = ["multiTool", "read", "automate"] as const;
