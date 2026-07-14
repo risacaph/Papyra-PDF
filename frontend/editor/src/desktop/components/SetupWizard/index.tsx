@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Stack, Text, Alert, Loader, Center } from "@mantine/core";
 import { Button } from "@app/ui/Button";
 import { DesktopAuthLayout } from "@app/components/SetupWizard/DesktopAuthLayout";
-import { SaaSLoginScreen } from "@app/components/SetupWizard/SaaSLoginScreen";
-import { SaaSSignupScreen } from "@app/components/SetupWizard/SaaSSignupScreen";
 import { ServerSelectionScreen } from "@app/components/SetupWizard/ServerSelectionScreen";
 import { SelfHostedLoginScreen } from "@app/components/SetupWizard/SelfHostedLoginScreen";
 import {
@@ -24,8 +22,6 @@ import "@app/auth/ui/auth.css";
 import { DisabledButtonWithTooltip } from "@app/components/shared/DisabledButtonWithTooltip";
 
 enum SetupStep {
-  SaaSLogin,
-  SaaSSignup,
   ServerSelection,
   SelfHostedLogin,
 }
@@ -44,10 +40,10 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({
   onClose,
 }) => {
   const { t } = useTranslation();
-  const [activeStep, setActiveStep] = useState<SetupStep>(SetupStep.SaaSLogin);
-  const [serverConfig, setServerConfig] = useState<ServerConfig | null>({
-    url: STIRLING_SAAS_URL,
-  });
+  const [activeStep, setActiveStep] = useState<SetupStep>(
+    SetupStep.ServerSelection,
+  );
+  const [serverConfig, setServerConfig] = useState<ServerConfig | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selfHostedMfaCode, setSelfHostedMfaCode] = useState("");
@@ -55,56 +51,6 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({
   const [lockConnectionMode, setLockConnectionMode] = useState(false);
   const [lockedServerUnreachable, setLockedServerUnreachable] = useState(false);
   const [lockedServerChecking, setLockedServerChecking] = useState(false);
-
-  const handleSaaSLogin = async (username: string, password: string) => {
-    if (!serverConfig) {
-      setError("No SaaS server configured");
-      return;
-    }
-
-    try {
-      setLoading(true);
-      setError(null);
-
-      // Only attempt password login if a password is provided
-      // If password is empty, assume OAuth login already completed
-      const isAlreadyAuthenticated = await authService.isAuthenticated();
-      if (!isAlreadyAuthenticated && password) {
-        await authService.login(serverConfig.url, username, password);
-      }
-
-      await connectionModeService.switchToSaaS(serverConfig.url);
-      tauriBackendService.startBackend().catch(console.error);
-      onComplete();
-    } catch (err) {
-      console.error("SaaS login failed:", err);
-      setError(err instanceof Error ? err.message : "SaaS login failed");
-      setLoading(false);
-    }
-  };
-
-  const handleSaaSLoginOAuth = async (_userInfo: UserInfo) => {
-    if (!serverConfig) {
-      setError("No SaaS server configured");
-      return;
-    }
-
-    try {
-      setLoading(true);
-      setError(null);
-
-      // OAuth already completed by authService.loginWithOAuth
-      await connectionModeService.switchToSaaS(serverConfig.url);
-      tauriBackendService.startBackend().catch(console.error);
-      onComplete();
-    } catch (err) {
-      console.error("SaaS OAuth login completion failed:", err);
-      setError(
-        err instanceof Error ? err.message : "Failed to complete SaaS login",
-      );
-      setLoading(false);
-    }
-  };
 
   const handleLocalMode = async () => {
     try {
@@ -122,24 +68,6 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({
       setError(err instanceof Error ? err.message : String(err));
       setLoading(false);
     }
-  };
-
-  const handleSelfHostedClick = () => {
-    if (lockConnectionMode) {
-      return;
-    }
-    setError(null);
-    setActiveStep(SetupStep.ServerSelection);
-  };
-
-  const handleSwitchToSignup = () => {
-    setError(null);
-    setActiveStep(SetupStep.SaaSSignup);
-  };
-
-  const handleSwitchToLogin = () => {
-    setError(null);
-    setActiveStep(SetupStep.SaaSLogin);
   };
 
   const handleServerSelection = (config: ServerConfig) => {
@@ -340,11 +268,6 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({
       setSelfHostedMfaCode("");
       setSelfHostedMfaRequired(false);
       setActiveStep(SetupStep.ServerSelection);
-    } else if (activeStep === SetupStep.ServerSelection) {
-      setActiveStep(SetupStep.SaaSLogin);
-      setServerConfig({ url: STIRLING_SAAS_URL });
-    } else if (activeStep === SetupStep.SaaSSignup) {
-      setActiveStep(SetupStep.SaaSLogin);
     }
   };
 
@@ -418,32 +341,11 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({
   const wizardContent = (
     <>
       {/* Step Content */}
-      {!lockConnectionMode && activeStep === SetupStep.SaaSLogin && (
-        <SaaSLoginScreen
-          serverUrl={serverConfig?.url || STIRLING_SAAS_URL}
-          onLogin={handleSaaSLogin}
-          onOAuthSuccess={handleSaaSLoginOAuth}
-          onSelfHostedClick={handleSelfHostedClick}
-          onSwitchToSignup={handleSwitchToSignup}
-          onSkipSignIn={handleLocalMode}
-          onClose={onClose}
-          loading={loading}
-          error={error}
-        />
-      )}
-
-      {!lockConnectionMode && activeStep === SetupStep.SaaSSignup && (
-        <SaaSSignupScreen
-          loading={loading}
-          error={error}
-          onLogin={handleSaaSLogin}
-          onSwitchToLogin={handleSwitchToLogin}
-        />
-      )}
-
       {!lockConnectionMode && activeStep === SetupStep.ServerSelection && (
         <ServerSelectionScreen
           onSelect={handleServerSelection}
+          onUseLocal={handleLocalMode}
+          onClose={onClose}
           loading={loading}
           error={error}
         />
@@ -558,20 +460,22 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({
         )}
 
       {/* Back Button */}
-      {!lockConnectionMode && activeStep > SetupStep.SaaSLogin && !loading && (
-        <div
-          className="navigation-link-container"
-          style={{ marginTop: "1.5rem" }}
-        >
-          <Button
-            variant="tertiary"
-            onClick={handleBack}
-            className="navigation-link-button"
+      {!lockConnectionMode &&
+        activeStep === SetupStep.SelfHostedLogin &&
+        !loading && (
+          <div
+            className="navigation-link-container"
+            style={{ marginTop: "1.5rem" }}
           >
-            {t("common.back", "Back")}
-          </Button>
-        </div>
-      )}
+            <Button
+              variant="tertiary"
+              onClick={handleBack}
+              className="navigation-link-button"
+            >
+              {t("common.back", "Back")}
+            </Button>
+          </div>
+        )}
     </>
   );
 

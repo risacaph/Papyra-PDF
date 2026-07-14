@@ -132,9 +132,7 @@ export const ConnectionSettings: React.FC = () => {
                     {t("settings.connection.server", "Server")}
                   </Text>
                   <Text size="sm" c="dimmed">
-                    {config.mode === "saas"
-                      ? "stirling.com"
-                      : config.server_config.url}
+                    {config.server_config.url}
                   </Text>
                 </div>
 

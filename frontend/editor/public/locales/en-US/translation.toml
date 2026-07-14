@@ -5139,7 +5139,7 @@ description = "Select the Link Editor tool and choose a PDF to add or remove hyp
 title = "Open the tool to edit links"
 
 [localMode]
-toolUnavailable = "This tool requires an account. Sign in to Papyra Cloud or connect to a self-hosted server to use it."
+toolUnavailable = "This tool requires an account. Connect to a self-hosted server to use it."
 
 [localMode.toolPicker]
 message = "Sign in to unlock all tools."
@@ -9730,18 +9730,13 @@ title = "Workspace"
 connectingTo = "Connecting to:"
 oauthPending = "Opening browser for authentication..."
 orContinueWith = "Or continue with email"
-skipSignIn = "Continue without signing in"
 sso = "Single Sign-On"
 submit = "Login"
 
 [setup.login.error]
-emptyEmail = "Please enter your email"
 emptyPassword = "Please enter your password"
 emptyUsername = "Please enter your username"
 oauthFailed = "OAuth login failed. Please try again."
-
-[setup.saas]
-title = "Sign in to Papyra"
 
 [setup.selfhosted]
 changeServerLocked = "Your organization has restricted this app to a specific server"
@@ -10016,7 +10011,6 @@ pleaseFillAllFields = "Please fill in all fields"
 signUp = "Sign Up"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Join Papyra to get started"
 title = "Create an account"
 unexpectedError = "Unexpected error: {{message}}"
 
